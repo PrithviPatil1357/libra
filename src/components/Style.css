@@ -110,7 +110,7 @@ img{
     box-sizing: border-box;
 }
 
-.card{
+.card{ 
     background-color: var(--secondary-color);
     border-radius: 1rem;
     padding: 0.5rem;
@@ -119,6 +119,11 @@ img{
     transition: .5s;
     text-align: center;
     position: relative; 
+}
+
+.card:hover{
+    transform: scale(1.05);
+    background-color: rgba(255,255,255,0.8);
 }
 
 .card img{
@@ -150,3 +155,30 @@ img{
     padding: 0.2rem;
     text-align: center;
 }
+
+.overlay{
+     min-height: 100vh;
+     width: 100%;
+     position: fixed;
+     left:0;
+     top: 0;
+     bottom: 0;
+     right: 0;
+     background: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.1));
+     display: flex;
+     align-items: center;
+     justify-content: center;
+}
+
+
+.inner-overlay{
+    width: 700px;
+    height: 550px;
+    background: wheat;
+    padding: 1.5rem;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-size: 1.3rem;
+}
+
