@@ -25,6 +25,8 @@ export const Main = () => {
                         <input type="text" placeholder="Enter name" value={search} onChange={e => setSearch(e.target.value)} onKeyPress={searchBook} />
                         <button ><i className="fas fa-search"></i></button>
                     </div>
+
+
                 </div>
                 <img src={require('../images/hp_lib.jpg')} alt="something" />
             </div>

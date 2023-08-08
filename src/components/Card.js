@@ -1,33 +1,34 @@
-import React from "react";
+import React, {useState} from "react";
 import {Modal} from "./Modal";
 export const Card = (props) => {
-    const books = props.bookData;
-    console.log('bookData:', books);
+    const [show,setShow]=useState(false);
+    const [bookItem,setItem]=useState();
+    console.log(props.bookData)
     return (
         <>
             {
-                books.map((book) => {
-                    const volumeInfo = book.volumeInfo;
-                    let thumbnail = volumeInfo.imageLinks && volumeInfo.imageLinks.thumbnail;
-                    console.log(volumeInfo);
-                    if (thumbnail !== undefined) {
+                props.bookData.map((item) => {
+                    let thumbnail=item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.smallThumbnail;
+                    let amount=item.saleInfo.listPrice && item.saleInfo.listPrice.amount;
+                    if(thumbnail!== undefined && amount !==undefined)
+                    {
                         return (
                             <>
-                                <div key={book.id} className="card">
-                                    <img src={thumbnail} alt="" />
-                                    <div className="bottom">
-                                        <h3 className="title">{volumeInfo.title}</h3>
-                                        <p className="amount">{book.price}</p>
-                                    </div>
+                            <div className="card" onClick={()=>{setShow(true);setItem(item)}}>
+                                <img src={thumbnail} alt="" />
+                                <div className="bottom">
+                                    <h3 className="title">{item.volumeInfo.title}</h3>
+                                    <p className="amount">&#8377;{amount}</p>
                                 </div>
-                                <Modal />
+                            </div>
+                              <Modal show={show} item={bookItem} onClose={()=>setShow(false)}/>
                             </>
                         )
                     }
-
-
+                    
                 })
             }
+
         </>
     )
-} 
+}
