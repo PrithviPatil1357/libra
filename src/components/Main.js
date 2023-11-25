@@ -6,7 +6,7 @@ export const Main = () => {
     const [bookData, setBookData] = useState([]);
     const searchBook = (e) => {
         if (e.key === 'Enter') {
-            axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyBh4E1SfTH5iykd0VwcPrBHYK05a9iF9Ig`).then(res => {
+            axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=${process.env.REACT_APP_API_KEY}`).then(res => {
                 console.log(setBookData(res.data.items));
             }).catch(e => {
                 console.log(e);

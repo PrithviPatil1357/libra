@@ -3,7 +3,6 @@ import {Modal} from "./Modal";
 export const Card = (props) => {
     const [show,setShow]=useState(false);
     const [bookItem,setItem]=useState();
-    console.log(props.bookData)
     return (
         <>
             {
