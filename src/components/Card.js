@@ -8,10 +8,9 @@ export const Card = (props) => {
         <>
             {
                 props.bookData.map((item) => {
-                    let thumbnail=item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.smallThumbnail;
-                    let amount=item.saleInfo.listPrice && item.saleInfo.listPrice.amount;
-                    if(thumbnail!== undefined && amount !==undefined)
-                    {
+                    let thumbnail = item.volumeInfo.imageLinks?.smallThumbnail ?? item.volumeInfo.imageLinks?.thumbnail ?? "./images/image_not_available.png";
+
+                    let amount = (item.saleInfo.saleability === "FOR_SALE" && item.saleInfo.retailPrice?.amount) ?? "Not For Sale";
                         return (
                             <>
                             <div className="card" onClick={()=>{setShow(true);setItem(item)}}>
@@ -24,7 +23,6 @@ export const Card = (props) => {
                               <Modal show={show} item={bookItem} onClose={()=>setShow(false)}/>
                             </>
                         )
-                    }
                     
                 })
             }
